@@ -7,8 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="fragment1">#65ADE6</color>
-    <color name="fragment2">#F44336</color>
-    <color name="fragment3">#FFEB3B</color>
+    <color name="blue">#65ADE6</color>
+    <color name="red">#F44336</color>
+    <color name="yellow">#FFEB3B</color>
 
 </resources>

@@ -1,10 +1,12 @@
 package com.jaspreetkaur.changecolor
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,10 +18,21 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Fragment1.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Fragment1 : Fragment(R.layout.fragment_1) {
+class Fragment1 : Fragment() ,ActivityInterface {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    lateinit var initView: View
+    lateinit var tvFrag: TextView
+    lateinit var fragmentActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentActivity = activity as MainActivity
+        fragmentActivity.activityInterface = this
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +47,15 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_1, container, false)
+
+        initView = inflater.inflate(R.layout.fragment_1, container, false)
+        tvFrag = initView.findViewById(R.id.tvFrag)
+        return initView
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -56,4 +75,8 @@ class Fragment1 : Fragment(R.layout.fragment_1) {
                 }
             }
     }
+        override fun ActivityInterface() {
+            tvFrag.setText("Changed Color ${fragmentActivity.i} times")
+        }
+
 }

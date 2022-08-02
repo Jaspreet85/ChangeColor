@@ -10,42 +10,32 @@ import com.jaspreetkaur.changecolor.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var tvCount : TextView
     lateinit var binding : ActivityMainBinding
+    lateinit var activityInterface :ActivityInterface
+    var i=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         binding.btnAlert.setOnClickListener {
+            i++
+            activityInterface.ActivityInterface()
             var alertDialog = AlertDialog.Builder(this)
             alertDialog.setTitle("Select Color")
             alertDialog.setMessage("Select a color that you want to set as fragment background")
             alertDialog.setPositiveButton("Blue") { _, _ ->
-                replaceFragment(Fragment1())
+                binding.fragmentContainer.setBackgroundResource(R.color.blue)
             }
             alertDialog.setNegativeButton("Red") { _, _ ->
-                replaceFragment(Fragment2())
+                binding.fragmentContainer.setBackgroundResource(R.color.red)
             }
             alertDialog.setNeutralButton("Yellow") { _, _ ->
-                replaceFragment(Fragment3())
+                binding.fragmentContainer.setBackgroundResource(R.color.yellow)
             }
             alertDialog.show()
 
         }
-
-
     }
-        private fun replaceFragment(fragment: Fragment){
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container,fragment)
-            fragmentTransaction.commit()
-
-
-
-        }
     }

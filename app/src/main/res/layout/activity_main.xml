@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,10 +19,10 @@
 
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container"
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="655dp"
-
+        android:name="com.jaspreetkaur.changecolor.Fragment1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,3 +30,4 @@
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
