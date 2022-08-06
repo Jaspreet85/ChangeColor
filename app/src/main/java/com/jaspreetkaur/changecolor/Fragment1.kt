@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +27,7 @@ class Fragment1 : Fragment() ,ActivityInterface {
 
     lateinit var initView: View
     lateinit var tvFrag: TextView
+    lateinit var constraintLayout: ConstraintLayout
     lateinit var fragmentActivity: MainActivity
 
     override fun onAttach(context: Context) {
@@ -32,7 +35,6 @@ class Fragment1 : Fragment() ,ActivityInterface {
         fragmentActivity = activity as MainActivity
         fragmentActivity.activityInterface = this
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,7 @@ class Fragment1 : Fragment() ,ActivityInterface {
 
         initView = inflater.inflate(R.layout.fragment_1, container, false)
         tvFrag = initView.findViewById(R.id.tvFrag)
+        constraintLayout = initView.findViewById(R.id.constraintLayout)
         return initView
     }
 
@@ -75,8 +78,13 @@ class Fragment1 : Fragment() ,ActivityInterface {
                 }
             }
     }
-        override fun ActivityInterface() {
-            tvFrag.setText("Changed Color ${fragmentActivity.i} times")
+        override fun ActivityInterface(color:Int, i:Int) {
+            tvFrag.setText("Changed Color ${i} times")
+            when(color){
+                0-> constraintLayout.setBackgroundResource(R.color.blue)
+                1-> constraintLayout.setBackgroundResource(R.color.red)
+                2-> constraintLayout.setBackgroundResource(R.color.yellow)
+            }
         }
 
 }

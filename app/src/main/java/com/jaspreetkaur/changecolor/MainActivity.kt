@@ -1,5 +1,6 @@
 package com.jaspreetkaur.changecolor
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -13,29 +14,29 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var activityInterface :ActivityInterface
     var i=0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnAlert.setOnClickListener {
-            i++
-            activityInterface.ActivityInterface()
+
             var alertDialog = AlertDialog.Builder(this)
             alertDialog.setTitle("Select Color")
             alertDialog.setMessage("Select a color that you want to set as fragment background")
             alertDialog.setPositiveButton("Blue") { _, _ ->
-                binding.fragmentContainer.setBackgroundResource(R.color.blue)
+                i++
+                activityInterface.ActivityInterface(0,i)
             }
             alertDialog.setNegativeButton("Red") { _, _ ->
-                binding.fragmentContainer.setBackgroundResource(R.color.red)
+                i++
+                activityInterface.ActivityInterface(1,i)
             }
             alertDialog.setNeutralButton("Yellow") { _, _ ->
-                binding.fragmentContainer.setBackgroundResource(R.color.yellow)
+                i++
+                activityInterface.ActivityInterface(2,i)
             }
             alertDialog.show()
-
         }
     }
     }
